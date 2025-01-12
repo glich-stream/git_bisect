@@ -42,6 +42,9 @@ func (s *TicketService) CalculatePrice(age int, isStudent bool) (float64, error)
 		price *= 0.8
 	}
 
+	// Apply an additional discount of 2% for everyone
+	price *= 0.98
+
 	return price, nil
 }
 
@@ -54,6 +57,15 @@ func main() {
 
 	// Calculate the price for a 10-year old
 	price, err := s.CalculatePrice(10, false)
+	if err != nil {
+		panic(err)
+	}
+
+	// Print the price
+	fmt.Printf("Price: $%.2f\n", price)
+
+	// Calculate the price for a 25-year old student
+	price, err = s.CalculatePrice(25, true)
 	if err != nil {
 		panic(err)
 	}

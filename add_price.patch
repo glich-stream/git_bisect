@@ -1,0 +1,28 @@
+diff --git a/main.go b/main.go
+index b8b5b4f..d67edda 100644
+--- a/main.go
++++ b/main.go
+@@ -42,6 +42,9 @@ func (s *TicketService) CalculatePrice(age int, isStudent bool) (float64, error)
+ 		price *= 0.8
+ 	}
+ 
++	// Apply an additional discount of 2% for everyone
++	price *= 0.98
++
+ 	return price, nil
+ }
+ 
+@@ -60,4 +63,13 @@ func main() {
+ 
+ 	// Print the price
+ 	fmt.Printf("Price: $%.2f\n", price)
++
++	// Calculate the price for a 25-year old student
++	price, err = s.CalculatePrice(25, true)
++	if err != nil {
++		panic(err)
++	}
++
++	// Print the price
++	fmt.Printf("Price: $%.2f\n", price)
+ }

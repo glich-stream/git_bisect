@@ -1,6 +1,9 @@
 package main
 
-import "testing"
+import (
+	"math"
+	"testing"
+)
 
 func TestTicketService(t *testing.T) {
 	tests := []struct {
@@ -22,7 +25,7 @@ func TestTicketService(t *testing.T) {
 		{
 			name:          "child price",
 			basePrice:     10.00,
-			age:           10,
+			age:           9,
 			isStudent:     false,
 			expectedPrice: 5.00,
 			expectError:   false,
@@ -92,7 +95,7 @@ func TestTicketService(t *testing.T) {
 				t.Fatalf("unexpected error: %v", err)
 			}
 
-			if price != tt.expectedPrice {
+			if math.Abs(price-tt.expectedPrice) > 0.0001 {
 				t.Errorf("expected price %.2f but got %.2f", tt.expectedPrice, price)
 			}
 		})

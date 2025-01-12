@@ -23,8 +23,8 @@ func (s *TicketService) CalculatePrice(age int, isStudent bool) (float64, error)
 
 	price := s.basePrice
 
-	// Children under 12 get 50% off
-	if age < 12 {
+	// Children under 10 get 50% off
+	if age < 10 {
 		price *= 0.5
 	}
 

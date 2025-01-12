@@ -28,8 +28,8 @@ func (s *TicketService) CalculatePrice(age int, isStudent bool) (float64, error)
 		price *= 0.5
 	}
 
-	// Seniors (65+) get 30% off
-	if age >= 65 {
+	// Seniors (70+) get 30% off
+	if age >= 70 {
 		price *= 0.7
 	}
 

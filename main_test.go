@@ -33,7 +33,7 @@ func TestTicketService(t *testing.T) {
 		{
 			name:          "senior price",
 			basePrice:     10.00,
-			age:           65,
+			age:           60,
 			isStudent:     false,
 			expectedPrice: 7.00,
 			expectError:   false,

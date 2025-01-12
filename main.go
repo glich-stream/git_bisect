@@ -6,14 +6,18 @@ import (
 )
 
 type TicketService struct {
-	basePrice float64
+	basePrice       float64
+	discountedPrice float64
 }
 
 func NewTicketService(basePrice float64) (*TicketService, error) {
 	if basePrice <= 0 {
 		return nil, errors.New("base price must be positive")
 	}
-	return &TicketService{basePrice: basePrice}, nil
+	return &TicketService{
+		basePrice:       basePrice,
+		discountedPrice: basePrice * 0.9,
+	}, nil
 }
 
 func (s *TicketService) CalculatePrice(age int, isStudent bool) (float64, error) {
